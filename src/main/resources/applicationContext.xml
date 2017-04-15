@@ -20,7 +20,7 @@ http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
   <context:property-placeholder location="classpath:jdbc.properties" />
 
   <!-- 自动扫描dao和service包(自动注入) -->
-  <context:component-scan base-package="com.songzhi" />
+  <context:component-scan base-package="com.tianjian.ehrp" />
   
   <!-- JNDI(通过Tomcat)方式配置数据源 -->
   <!-- <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean"> <property name="jndiName" value="${jndiName}"></property> </bean> -->
@@ -28,9 +28,9 @@ http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
   
   <!-- 配置数据源 -->
   <bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
-    <property name="url" value="${jdbc_url}" />
-    <property name="username" value="${jdbc_username}" />
-    <property name="password" value="${jdbc_password}" />
+    <property name="url" value="${h2.jdbc.url}" />
+    <property name="username" value="${h2.jdbc.username}" />
+    <property name="password" value="${h2.jdbc.password}" />
 
     <!-- 初始化连接大小 -->
     <property name="initialSize" value="0" />
@@ -45,7 +45,7 @@ http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
 
     <!-- <property name="poolPreparedStatements" value="true" /> <property name="maxPoolPreparedStatementPerConnectionSize" value="33" /> -->
 
-    <property name="validationQuery" value="${validationQuery}" />
+    <property name="validationQuery" value="${h2.validationQuery}" />
     <property name="testOnBorrow" value="false" />
     <property name="testOnReturn" value="false" />
     <property name="testWhileIdle" value="true" />
@@ -72,10 +72,10 @@ http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
     <property name="dataSource" ref="dataSource" />
     <property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-				<property name="databasePlatform" value="${hibernate.dialect}" />
+				<property name="databasePlatform" value="${h2.hibernate.dialect}" />
 			</bean>
 		</property>
-		<property name="packagesToScan" value="com.songzhi.model" />
+		<property name="packagesToScan" value="com.tianjian.ehrp.model" />
     <property name="jpaProperties">
       <props>
         <prop key="hibernate.current_session_context_class">thread</prop>
@@ -94,7 +94,7 @@ http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
     <property name="entityManagerFactory" ref="entityManagerFactory"></property>
   </bean>
 
-  <jpa:repositories base-package="com.songzhi.dao"  transaction-manager-ref="transactionManager" entity-manager-factory-ref="entityManagerFactory"/>
+  <jpa:repositories base-package="com.tianjian.ehrp.dao"  transaction-manager-ref="transactionManager" entity-manager-factory-ref="entityManagerFactory"/>
 
   <!-- 注解方式配置事物 -->
   <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tianjian.ehrp.ui.MainController">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="规则">
+            <items>
+              <MenuItem mnemonicParsing="false" text="新建" />
+                  <MenuItem mnemonicParsing="false" text="查看" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="模型">
+            <items>
+              <MenuItem mnemonicParsing="false" text="新建" />
+                  <MenuItem mnemonicParsing="false" text="查看" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="校验">
+            <items>
+              <MenuItem mnemonicParsing="false" text="验证模型配置" />
+                  <MenuItem mnemonicParsing="false" text="校验数据" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <AnchorPane fx:id="contentPane" VBox.vgrow="ALWAYS" />
+   </children>
+</VBox>
